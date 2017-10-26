@@ -1,15 +1,19 @@
 import re
 from random import randint
 from termcolor import colored
+from .timer_controller import TimerController
 
 class ArithmeticController:
     correct_answer_count = 0
 
     @classmethod
     def start(cls):
+        TimerController.start_timer()
+        print(colored("スタート!", "green"))
         for i in range(1, 11):
             cls.get_user_answer()
-        print(colored("\n=> 結果 : {0}/10".format(cls.correct_answer_count), "green"))
+        end_time = TimerController.get_result_time()
+        print(colored("\n=> 正解数 : {0}/10, タイム : {1}".format(cls.correct_answer_count, end_time), "green"))
 
     @classmethod
     def get_user_answer(cls):
