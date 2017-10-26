@@ -1,4 +1,5 @@
 import re
+from termcolor import colored
 
 class GameController:
     @classmethod
@@ -14,8 +15,8 @@ class GameController:
     @classmethod
     def get_user_input(cls):
         while True:
-            selected_game = input("どの問題を解きますか？ => ")
+            selected_game = input(colored("どの問題を解きますか？ => ", "cyan"))
             if re.match(r"^a|s|m|d$", selected_game):
                 return selected_game
             else:
-                print("入力値に誤りがあります。もう一度入力してください。")
+                print(colored("入力値に誤りがあります。もう一度入力してください。", "red"))

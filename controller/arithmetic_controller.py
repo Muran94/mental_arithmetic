@@ -1,14 +1,15 @@
-from random import randint
 import re
+from random import randint
+from termcolor import colored
 
-class Arithmetic:
+class ArithmeticController:
     correct_answer_count = 0
 
     @classmethod
     def start(cls):
         for i in range(1, 11):
             cls.get_user_answer()
-        print("結果 : {0}/10".format(cls.correct_answer_count))
+        print(colored("\n=> 結果 : {0}/10".format(cls.correct_answer_count), "green"))
 
     @classmethod
     def get_user_answer(cls):
@@ -19,15 +20,14 @@ class Arithmetic:
             if re.match(r"^[0-9]+$", user_answer):
                 if int(user_answer) == cls.correct_answer:
                     cls.correct_answer_count += 1
-                    print("正解")
-                    break
+                    print(colored("◎ 正解!", "yellow"))
                 else:
-                    print("不正解")
-                    break
+                    print(colored("× 不正解", "red"))
+                break
             else:
-                print("入力された値に誤りがあります")
+                print(colored("入力された値に誤りがあります", red))
 
-class Addition(Arithmetic):
+class AdditionController(ArithmeticController):
     @classmethod
     def create_problem(cls):
         num1 = randint(1, 1000)
@@ -35,7 +35,7 @@ class Addition(Arithmetic):
         cls.correct_answer = num1 + num2
         return "{0:>3d} + {1:>3d} = ".format(num1, num2)
 
-class Subtraction(Arithmetic):
+class SubtractionController(ArithmeticController):
     @classmethod
     def create_problem(cls):
         num1 = randint(1, 999)
@@ -43,7 +43,7 @@ class Subtraction(Arithmetic):
         cls.correct_answer = num2 - num1
         return "{0:>3d} - {1:>3d} = ".format(num2, num1)
 
-class Multiplication(Arithmetic):
+class MultiplicationController(ArithmeticController):
     @classmethod
     def create_problem(cls):
         num1 = randint(1, 99)
@@ -51,7 +51,7 @@ class Multiplication(Arithmetic):
         cls.correct_answer = num2 * num1
         return "{0:>3d} × {1:>3d} = ".format(num1, num2)
 
-class Division(Arithmetic):
+class DivisionController(ArithmeticController):
     @classmethod
     def create_problem(cls):
         while True:
