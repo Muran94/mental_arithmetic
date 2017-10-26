@@ -26,7 +26,7 @@ class ArithmeticController:
                     cls.correct_answer_count += 1
                     print(colored("◎ 正解!", "yellow"))
                 else:
-                    print(colored("× 不正解", "red"))
+                    print(colored("× 不正解! （正解は{0}）".format(cls.correct_answer), "red"))
                 break
             else:
                 print(colored("入力された値に誤りがあります", red))
@@ -42,24 +42,25 @@ class AdditionController(ArithmeticController):
 class SubtractionController(ArithmeticController):
     @classmethod
     def create_problem(cls):
-        num1 = randint(1, 999)
-        num2 = randint(num1, 1000)
+        num1 = randint(1, 1000)
+        num2 = randint(num1, 1001)
         cls.correct_answer = num2 - num1
         return "{0:>3d} - {1:>3d} = ".format(num2, num1)
 
 class MultiplicationController(ArithmeticController):
     @classmethod
     def create_problem(cls):
-        num1 = randint(1, 99)
-        num2 = randint(1, 99)
+        num1 = randint(1, 101)
+        num2 = randint(1, 101)
         cls.correct_answer = num2 * num1
         return "{0:>3d} × {1:>3d} = ".format(num1, num2)
 
 class DivisionController(ArithmeticController):
     @classmethod
     def create_problem(cls):
+        num1 = randint(1, 100)
+        # 割り切れる数が見つかるまでループを回す
         while True:
-            num1 = randint(1, 100)
             num2 = randint(num1, 1000)
             if num2 % num1 == 0:
                 break
