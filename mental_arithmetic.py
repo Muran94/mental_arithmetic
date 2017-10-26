@@ -1,5 +1,5 @@
 from config.game_setting import GameSetting
-from arithmetic.arithmetic import Addition, Subtraction
+from arithmetic.arithmetic import Addition, Subtraction, Multiplication, Division
 import re
 
 class MentalArithmeticApplication:
@@ -15,11 +15,11 @@ class MentalArithmeticApplication:
             subtraction = Subtraction()
             subtraction.start() # ここらへんってクラスメソッドとして定義するだけで十分じゃないの？
         elif selected_game == "m":
-            pass
+            multiplication = Multiplication()
+            multiplication.start() # ここらへんってクラスメソッドとして定義するだけで十分じゃないの？
         elif selected_game == "d":
-            pass
-
-
+            division = Division()
+            division.start() # ここらへんってクラスメソッドとして定義するだけで十分じゃないの？
 
 game_setting = GameSetting()
 selected_game = game_setting.select_game()
