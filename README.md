@@ -1,5 +1,5 @@
 # How to Start...
-### First install `Colored` module if you still don't have it in your pc.
+### First install `termcolor` if you still don't have it in your system.
 `$ pip install termcolor`
 
 ### Run the app by hitting the command below
