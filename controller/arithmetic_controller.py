@@ -42,16 +42,16 @@ class AdditionController(ArithmeticController):
 class SubtractionController(ArithmeticController):
     @classmethod
     def create_problem(cls):
-        num1 = randint(1, 1000)
-        num2 = randint(num1, 1001)
+        num1 = randint(1, 999)
+        num2 = randint(num1, 1000)
         cls.correct_answer = num2 - num1
         return "{0:>3d} - {1:>3d} = ".format(num2, num1)
 
 class MultiplicationController(ArithmeticController):
     @classmethod
     def create_problem(cls):
-        num1 = randint(1, 101)
-        num2 = randint(1, 101)
+        num1 = randint(1, 100)
+        num2 = randint(1, 100)
         cls.correct_answer = num2 * num1
         return "{0:>3d} × {1:>3d} = ".format(num1, num2)
 
